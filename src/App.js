@@ -31,7 +31,7 @@ class App extends Component {
 
   calculate = () => {
     try {
-      const calculatedResult = math.evaluate(this.state.result);
+      const calculatedResult = this.evaluateExpression(this.state.result);
       this.setState({
           result: (calculatedResult || '') + ''
       });
@@ -52,6 +52,11 @@ class App extends Component {
     this.setState({
         result: this.state.result.slice(0, -1)
     })
+  };
+
+  // Función para evaluar la expresión matemática
+  evaluateExpression = (expression) => {
+    return Function(`'use strict'; return (${expression})`)();
   };
 
   render() {
