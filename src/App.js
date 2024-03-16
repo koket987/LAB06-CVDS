@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles.css';
 import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from './components/KeyPadComponent';
-import math from 'mathjs';
 
 class App extends Component {
   state = {
