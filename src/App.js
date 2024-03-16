@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from './components/KeyPadComponent';
+import math from 'mathjs';
 
 class App extends Component {
   state = {
@@ -27,27 +28,19 @@ class App extends Component {
       })
     }
   };
+
   calculate = () => {
-    const { result } = this.state;
-    let checkResult = '';
-
-    if (result.includes('--')) {
-        checkResult = result.replace('--', '+');
-    } else {
-        checkResult = result;
-    }
-
     try {
-        const calculatedResult = new Function('return (' + checkResult + ')')();
-        this.setState({
-            result: (calculatedResult || '') + ''
-        });
+      const calculatedResult = math.evaluate(this.state.result);
+      this.setState({
+          result: (calculatedResult || '') + ''
+      });
     } catch (e) {
-        this.setState({
-            result: 'error'
-        });
+      this.setState({
+          result: 'error'
+      });
     }
-};
+  };
 
   reset = () => {
     this.setState({
