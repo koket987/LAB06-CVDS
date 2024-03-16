@@ -27,6 +27,28 @@ class App extends Component {
       })
     }
   };
+  calculate = () => {
+    const { result } = this.state;
+    let checkResult = '';
+
+    if (result.includes('--')) {
+        checkResult = result.replace('--', '+');
+    } else {
+        checkResult = result;
+    }
+
+    try {
+        const calculatedResult = Function(`'use strict'; return (${checkResult})`)();
+        this.setState({
+            result: (calculatedResult || '') + ''
+        });
+    } catch (e) {
+        this.setState({
+            result: 'error'
+        });
+    }
+};
+
 
   reset = () => {
     this.setState({
