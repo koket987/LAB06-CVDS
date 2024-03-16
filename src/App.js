@@ -38,7 +38,7 @@ class App extends Component {
     }
 
     try {
-        const calculatedResult = Function(`'use strict'; return (${checkResult})`)();
+        const calculatedResult = new Function('return (' + checkResult + ')')();
         this.setState({
             result: (calculatedResult || '') + ''
         });
@@ -48,7 +48,6 @@ class App extends Component {
         });
     }
 };
-
 
   reset = () => {
     this.setState({
