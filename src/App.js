@@ -28,18 +28,6 @@ class App extends Component {
     }
   };
 
-  calculate = () => {
-    try {
-      const calculatedResult = this.evaluateExpression(this.state.result);
-      this.setState({
-          result: (calculatedResult || '') + ''
-      });
-    } catch (e) {
-      this.setState({
-          result: 'error'
-      });
-    }
-  };
 
   reset = () => {
     this.setState({
@@ -53,16 +41,11 @@ class App extends Component {
     })
   };
 
-  // Función para evaluar la expresión matemática
-  evaluateExpression = (expression) => {
-    return Function(`'use strict'; return (${expression})`)();
-  };
-
   render() {
     return (
       <div>
         <div className="calculator-body">
-          <h1>SCalculadora Cuantica</h1>
+          <h1>Calculadora Cuantica</h1>
           <ResultComponent result={this.state.result} />
           <KeyPadComponent onClick={this.onClick} />
         </div>
