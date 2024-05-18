@@ -11,7 +11,7 @@
 }
 
 .calculator-body {
-  max-width: 400px;
+  max-width: 300px;
   margin: auto;
 }
 
@@ -25,3 +25,4 @@ button {
   height: 60px;
   font-size: 30px;
 }
+3
